@@ -1,3 +1,13 @@
-<div id="my-surveys" class="col-xs-8 my-surveys surveys"></div>
-<div class="empty-space-div col-xs-1"></div>
-<div id="take-surveys" class="col-xs-3 take-surveys surveys"></div>
+{{#each surveys as |survey|}}
+  <div class="row" style="margin-bottom: 2px;">
+    <div data-id="{{survey._id}}" class="col-xs-12">
+      <div id="my-surveys" class="col-xs-8 my-surveys surveys">
+        {{survey.title}}
+      </div>
+      <div class="empty-space-div col-xs-1"></div>
+      <div id="take-surveys" class="col-xs-3 take-surveys surveys">
+        {{survey.question}}
+      </div>
+    </div>
+  </div>
+{{/each}}

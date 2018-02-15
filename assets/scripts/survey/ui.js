@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const loadSurveysTemplate = require('../templates/load-surveys.handlebars')
 
 const createSurveySuccess = function (data) {
   console.log('successfully created survey', data)
@@ -11,6 +12,10 @@ const createSurveyFailure = function (error) {
 }
 
 const getAllSurveysSuccess = function (data) {
+  const showSurveysHtml = loadSurveysTemplate({
+    surveys: data.surveys
+  })
+  $('#survey-content').append(showSurveysHtml)
   console.log('these are surveys', data)
 }
 

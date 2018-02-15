@@ -59,11 +59,14 @@ body {
 
 .surveys {
   border: 1px solid $black;
-  height: 400px;
+  height: 25px;
 }
 
 .surv {
   width: 90%;
+  border: 1px solid $black;
+  height: 500px;
+  overflow-y: scroll;
 }
 
 .form {
