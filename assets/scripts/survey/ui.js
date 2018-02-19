@@ -30,7 +30,6 @@ const loadSurveyForm = function () {
 }
 
 const rButton = function () {
-  $('.refresh-survey').html('')
   const showRButtonHtml = loadRefreshTemplate()
   if ($('.refresh-survey').html('')) {
     $('.refresh-survey').append(showRButtonHtml)
@@ -38,7 +37,6 @@ const rButton = function () {
 }
 
 const crButton = function () {
-  $('.create-survey').html('')
   const showCrButtonHtml = loadCreateButtonTemplate()
   if ($('.create-survey').html('')) {
     $('.create-survey').append(showCrButtonHtml)
