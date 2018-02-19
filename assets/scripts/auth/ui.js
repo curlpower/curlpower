@@ -23,6 +23,7 @@ const signUpSuccess = function (data) {
 }
 
 const signedInNav = function () {
+  $('.account-nav').html('')
   const showSignedInNavHtml = showSignedInNavTemplate()
   $('.account-nav').append(showSignedInNavHtml)
 }
@@ -38,6 +39,7 @@ const surveyContent = function () {
 }
 
 const userActions = function () {
+  $('.user-actions').html('')
   const showUserActionsHtml = loadUserActionsTemplate()
   $('.user-actions').append(showUserActionsHtml)
 }
@@ -72,7 +74,7 @@ const signInFailure = function (error) {
 }
 
 const signUpFailure = function (error) {
-  console.log(error)
+  // console.log(error)
   const errorStatus = error.status.toString()
   if (errorStatus.startsWith('4') === true) {
     survUi.addMessage('.status-message-sign-up', 'Invalid Email or Password.')

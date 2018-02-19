@@ -43,19 +43,32 @@ const crButton = function () {
   }
 }
 
-const getAllSurveysSuccess = function (data) {
-  $('.my-surv').html('')
-  $('.take-surv').html('')
+const dashboard = function (data) {
   const mySurveys = []
+  const otherSurveys = []
+  const takenIdList = []
   const takeableSurveys = []
-  data.surveys.forEach(function (survey) {
+  data.surveys.forEach((survey) => {
     if (survey._owner === store.user._id) {
       mySurveys.push(survey)
+    } else {
+      otherSurveys.push(survey)
+    }
+  })
+  otherSurveys.forEach(survey => {
+    for (let i = 0; i < survey.submissions.length; i++) {
+      if (survey.submissions[i]._submitter === store.user._id) {
+        return takenIdList.push(survey._id)
+      }
+    }
+  })
+  otherSurveys.forEach(survey => {
+    if (takenIdList.includes(survey._id)) {
+      return
     } else {
       takeableSurveys.push(survey)
     }
   })
-
   mySurveys.forEach(survey => {
     survey.stats = {
       truth: 0,
@@ -65,23 +78,29 @@ const getAllSurveysSuccess = function (data) {
     survey.submissions.forEach(submission => {
       if (submission.answer === true) {
         survey.stats.truth++
-        survey.stats.total++
       } else {
         survey.stats.falsey++
-        survey.stats.total++
       }
+      survey.stats.total++
     })
   })
+  return { mySurveys, takeableSurveys }
+}
+
+const getAllSurveysSuccess = function (data) {
+  $('.my-surv').html('')
+  $('.take-surv').html('')
+
+  const surveyDisplay = dashboard(data)
 
   const showSurveysHtml = loadSurveysTemplate({
-    surveys: mySurveys
+    surveys: surveyDisplay.mySurveys
   })
   $('.my-surv').append(showSurveysHtml)
   const showTakeablesHtml = loadTakeablesTemplate({
-    surveys: takeableSurveys
+    surveys: surveyDisplay.takeableSurveys
   })
   $('.take-surv').append(showTakeablesHtml)
-  // console.log('these are surveys', data)
   rButton()
   crButton()
 }
