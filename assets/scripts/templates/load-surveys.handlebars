@@ -2,7 +2,7 @@
 {{#each surveys as |survey|}}
   <div class="row" style="margin-bottom: 2px; font-size: 15px;">
     <div data-my-survey-id="{{survey._id}}" class="my-surveys surveys">
-      {{survey.title}} Total: {{survey.stats.total}} True: {{survey.stats.truth}} False: {{survey.stats.falsey}}
+      <div style="color: #660066;">{{survey.title}} </div>Total: {{survey.stats.total}} True: {{survey.stats.truth}} False: {{survey.stats.falsey}}
       <button type="button" class="edit-survey" name="button">
         Edit Me
       </button>

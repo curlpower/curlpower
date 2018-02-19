@@ -56,16 +56,22 @@ h2 {
   margin-left: 10px;
   background-color: #4d4dff;
   color: $white;
+  margin-top: -15px;
 }
 
 .delete-survey {
   background-color: #990000;
   color: $white;
+  margin-top: -15px;
 }
 
 .take-survey {
   background-color: #C0C0C0;
   color: $black;
+}
+
+.take-style {
+  padding: 10px;
 }
 
 .message {
@@ -95,7 +101,7 @@ h2 {
 
 .surveys {
   background-color: #fff;
-  height: 30px;
+  height: auto;
   text-align: left;
   // border: 1px solid $black;
 }
