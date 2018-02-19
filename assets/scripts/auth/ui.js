@@ -60,7 +60,6 @@ const signInSuccess = function (data) {
   surveyContent()
   userActions()
   feedbackMessageDiv()
-  // console.log('store is, ', store)
 }
 
 const signInFailure = function (error) {
@@ -74,7 +73,6 @@ const signInFailure = function (error) {
 }
 
 const signUpFailure = function (error) {
-  // console.log(error)
   const errorStatus = error.status.toString()
   if (errorStatus.startsWith('4') === true) {
     survUi.addMessage('.status-message-sign-up', 'Invalid Email or Password.')
@@ -91,7 +89,6 @@ const changePasswordSuccess = function (data) {
 
 const changePasswordFailure = function (error) {
   const errorStatus = error.status.toString()
-  // console.log('cp store is', store)
   if (errorStatus.startsWith('4') === true || errorStatus.startsWith('5') === true) {
     survUi.addMessage('.status-message-change-password', 'Incorrect password combination.')
   } else if (errorStatus.startsWith('0') === true) {
