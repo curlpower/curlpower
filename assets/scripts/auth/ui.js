@@ -74,7 +74,7 @@ const signInFailure = function (error) {
 }
 
 const signUpFailure = function (error) {
-  console.log(error)
+  // console.log(error)
   const errorStatus = error.status.toString()
   if (errorStatus.startsWith('4') === true) {
     survUi.addMessage('.status-message-sign-up', 'Invalid Email or Password.')
