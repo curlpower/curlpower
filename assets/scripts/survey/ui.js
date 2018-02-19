@@ -115,7 +115,6 @@ const getASurveySuccess = function (data) {
     survey: data.survey
   })
   $('.main').append(showEditHtml)
-  // console.log('editable survey ', data)
 }
 
 const getASurveyFailure = function () {
