@@ -6,6 +6,17 @@ const ui = require('./ui')
 const survApi = require('../survey/api')
 const survEvents = require('../survey/events')
 
+const throttle = function (func, interval) {
+  let lastCall = 0
+  return function () {
+    const now = Date.now()
+    if (lastCall + interval < now) {
+      lastCall = now
+      return func.apply(this, arguments)
+    }
+  }
+}
+
 const onCreateSubmission = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
@@ -27,7 +38,7 @@ const onTakeSurvey = function (event) {
 }
 
 const addHandlers = function () {
-  $('.main').on('submit', '#create-submission-form', onCreateSubmission)
+  $('.main').on('submit', '#create-submission-form', throttle(onCreateSubmission, 1000))
   $('.main').on('click', '.take-survey', onTakeSurvey)
 }
 
